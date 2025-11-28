@@ -1,0 +1,10 @@
+package core
+
+import "time"
+
+type User struct {
+	Id           string    `db:"id"`
+	Username     string    `db:"username"`
+	PasswordHash string    `db:"password_hash"`
+	CreatedAt    time.Time `db:"created_at"`
+}
