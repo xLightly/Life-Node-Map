@@ -1,6 +1,7 @@
 package core
 
 import (
+	"context"
 	"errors"
 	"time"
 )
@@ -30,4 +31,11 @@ func NewMap(id string, creatorId string, originMapId string, title string, descr
 		CreatedAt:     createdAt,
 		UpdatedAt:     updatedAt,
 	}, nil
+}
+
+type MapRepository interface {
+	Create(ctx context.Context, m *Map) error
+	GetById(ctx context.Context, id string) (*Map, error)
+	UpdateById(ctx context.Context, id string, newTitle string, newDescription string, isPublic bool) error
+	DeleteById(ctx context.Context, id string) error
 }
