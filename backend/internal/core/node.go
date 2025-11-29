@@ -1,6 +1,7 @@
 package core
 
 import (
+	"context"
 	"errors"
 )
 
@@ -25,4 +26,11 @@ func NewNode(id string, mapId string, ltree path, title string, props []byte) (*
 		Title:      title,
 		Properties: props,
 	}, nil
+}
+
+type NodeRepository interface {
+	Create(ctx context.Context, n *Node) error
+	GetById(ctx context.Context, id string) (*Node, error)
+	UpdateById(ctx context.Context, id string, newLtree path, newTitle string, newProperties []byte) error
+	DeleteById(ctx context.Context, id string) error
 }

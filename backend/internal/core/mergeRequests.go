@@ -1,6 +1,7 @@
 package core
 
 import (
+	"context"
 	"errors"
 	"time"
 )
@@ -28,4 +29,11 @@ func NewMergeRequest(id string, creatorId string, sourceMapId string, targerMapI
 		Status:      status,
 		CreatedAt:   createdAt,
 	}, nil
+}
+
+type MergeRequestRepository interface {
+	Create(ctx context.Context, mr *MergeRequest) error
+	GetById(ctx context.Context, id string) (*MergeRequest, error)
+	UpdateById(ctx context.Context, id string, newStatus requestStatus) error
+	DeleteById(ctx context.Context, id string) error
 }

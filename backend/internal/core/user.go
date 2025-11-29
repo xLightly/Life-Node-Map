@@ -1,6 +1,7 @@
 package core
 
 import (
+	"context"
 	"errors"
 	"time"
 )
@@ -22,4 +23,11 @@ func NewUser(id string, username string, passwordHash string, createdAt time.Tim
 		PasswordHash: passwordHash,
 		CreatedAt:    createdAt,
 	}, nil
+}
+
+type UserRepository interface {
+	Create(ctx context.Context, user *User) error
+	GetById(ctx context.Context, id string) (*User, error)
+	UpdateById(ctx context.Context, id string, username string, passwordHash string) error
+	DeleteById(ctx context.Context, id string) error
 }

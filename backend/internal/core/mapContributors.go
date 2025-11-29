@@ -1,6 +1,9 @@
 package core
 
-import "errors"
+import (
+	"context"
+	"errors"
+)
 
 type contributorRole string
 
@@ -19,4 +22,11 @@ func NewMapContibutors(mapId string, userId string, role contributorRole) (*MapC
 		UserId: userId,
 		Role:   role,
 	}, nil
+}
+
+type MapContributorsRepository interface {
+	Create(ctx context.Context, mp *MapContributors) error
+	GetById(ctx context.Context, id string) (*MapContributors, error)
+	UpdateById(ctx context.Context, role contributorRole) error
+	DeleteById(ctx context.Context, id string) error
 }
