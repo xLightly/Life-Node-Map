@@ -72,7 +72,7 @@ SELECT * FROM nodes WHERE path <@ 'relocation.usa';
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/life-maps.git
+    git clone https://github.com/xLightly/life-maps.git
     cd life-maps
     ```
 
