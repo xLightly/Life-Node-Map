@@ -36,6 +36,9 @@ func NewMap(id string, creatorId string, originMapId string, title string, descr
 type MapRepository interface {
 	Create(ctx context.Context, m *Map) error
 	GetById(ctx context.Context, id string) (*Map, error)
-	UpdateById(ctx context.Context, id string, newTitle string, newDescription string, isPublic bool) error
+	GetByCreatorId(ctx context.Context, creatodId string) (*Map, error)
+	GetAll(ctx context.Context) ([]Map, error)
+	UpdateById(ctx context.Context, id string, newMap *Map) error
 	DeleteById(ctx context.Context, id string) error
+	DeleteByCreatorId(ctx context.Context, creatorId string) error
 }

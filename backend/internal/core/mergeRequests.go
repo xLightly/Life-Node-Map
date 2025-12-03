@@ -34,6 +34,9 @@ func NewMergeRequest(id string, creatorId string, sourceMapId string, targerMapI
 type MergeRequestRepository interface {
 	Create(ctx context.Context, mr *MergeRequest) error
 	GetById(ctx context.Context, id string) (*MergeRequest, error)
-	UpdateById(ctx context.Context, id string, newStatus requestStatus) error
+	GetByCreatorId(ctx context.Context, creatorId string) (*MergeRequest, error)
+	GetAll(ctx context.Context) ([]MergeRequest, error)
+	UpdateById(ctx context.Context, id string, newMergeRequest *MergeRequest) error
 	DeleteById(ctx context.Context, id string) error
+	DeleteByCreatorId(ctx context.Context, creatorId string) error
 }

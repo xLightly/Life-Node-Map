@@ -28,6 +28,9 @@ func NewUser(id string, username string, passwordHash string, createdAt time.Tim
 type UserRepository interface {
 	Create(ctx context.Context, user *User) error
 	GetById(ctx context.Context, id string) (*User, error)
-	UpdateById(ctx context.Context, id string, username string, passwordHash string) error
+	GetByUsername(ctx context.Context, username string) (*User, error)
+	GetAll(ctx context.Context) ([]User, error)
+	UpdateById(ctx context.Context, id string, newUser *User) error
 	DeleteById(ctx context.Context, id string) error
+	DeleteByUsername(ctx context.Context, username string) error
 }

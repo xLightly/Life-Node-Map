@@ -31,6 +31,9 @@ func NewNode(id string, mapId string, ltree path, title string, props []byte) (*
 type NodeRepository interface {
 	Create(ctx context.Context, n *Node) error
 	GetById(ctx context.Context, id string) (*Node, error)
-	UpdateById(ctx context.Context, id string, newLtree path, newTitle string, newProperties []byte) error
+	GetByMapId(ctx context.Context, mapId string) (*Node, error)
+	GetAll(ctx context.Context) ([]Node, error)
+	UpdateById(ctx context.Context, id string, newNode *Node) error
 	DeleteById(ctx context.Context, id string) error
+	DeleteByMapId(ctx context.Context, mapId string) error
 }
